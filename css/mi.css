@@ -1,0 +1,12 @@
+body{
+	background-image: url("http://st.gdefon.com/wallpapers_original/wallpapers/80466_tekstura_cveta_tona_yarkost_svet_svechenie_1920x1200_(www.GdeFon.ru).jpg");
+	background-repeat: no-repeat;
+	background-position: fixed;
+	background-size: cover;
+}
+
+.divimg{
+	display: block;
+	margin:0 auto;
+
+}
