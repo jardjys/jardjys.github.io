@@ -5,8 +5,8 @@ body{
 	background-size: cover;
 }
 
-.divimg{
-	display: block;
-	margin:0 auto;
-
+.text{
+	background-color: black;
+	text-align: center;
+	color: white;
 }
