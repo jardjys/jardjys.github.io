@@ -10,3 +10,8 @@ body{
 	text-align: center;
 	color: white;
 }
+.centerimg{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
