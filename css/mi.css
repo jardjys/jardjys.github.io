@@ -31,3 +31,8 @@ body{
 	position:relative;
 	left: 25%
 }
+
+.subtitle{
+	  font-family: Consolas, monaco, monospace;
+	  font-size: 60px;
+}
