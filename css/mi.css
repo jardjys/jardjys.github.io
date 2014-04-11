@@ -23,7 +23,7 @@ body{
 .Interview{
 	text-align: center;
 	color:orange;
-	ont-family: 'Capriola', sans-serif;
+	font-family: 'Capriola', sans-serif;
 	font-size: 50px;
 }
 
@@ -35,4 +35,5 @@ body{
 .subtitle{
 	  font-family: Consolas, monaco, monospace;
 	  font-size: 60px;
+	  text-align: center;
 }
