@@ -1,4 +1,21 @@
 /*
+ *Added Methods
+ */
+ .pad{
+    padding-top: 2em;
+    padding-bottom: 2em;
+ }
+p{
+    font-size: 12.5px;
+    padding-bottom: .5em;
+
+}
+.changeslide{
+    padding: 5em;
+}
+
+
+/*
  * Added Fonts:
  */
 
@@ -140,14 +157,19 @@ main {
 	height: 100%;
 	width: 100%;
 }
+.capacitor{
+    height: 10%;
+    width: 10%;
+    padding-left: 1em;
+}
 /* Slide 1 */
 #slide-1 .bcg {background-image:url('../img/index1.jpg')}
 
 /* Slide 2 */
-#slide-2 .bcg {background: none; background-color: #010101; height: 310px; text-align: center}
+#slide-2 .bcg {background-image: url('../img/index2.jpg')}
 
 /* Slide 3 */
-#slide-3 .bcg {background-image:url('../bg/bg1.jpg')}
+#slide-3 .bcg {background-image:url('../img/index2.jpg')}
 
 
 /* Slide 4 */
