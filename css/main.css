@@ -179,6 +179,10 @@ main {
 /* Slide 5 */
 #slide-5 .bcg {background-image:url('../img/index2.jpg')}
 
+
+/* Slide 6 */
+#slide-6 .bcg {background-image:url('../img/index2.jpg')}
+
 .hsContainer {
 	display: table;
 	table-layout: fixed;
