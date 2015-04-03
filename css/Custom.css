@@ -1,0 +1,20 @@
+body { 
+    background-image: url('img/marble.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.title{
+	font-size: 50px;
+	text-align: center;
+	font-family: 'Rokkitt', serif;
+	margin-top: 20px;
+}
+
+.border{
+	color: #FFFFFF;
+}
+
+.center{
+	text-align: center;
+}
