@@ -1,37 +1,220 @@
 <!DOCTYPE html>
-<html>
- <head>
-    <title>Mail Helper - ACR</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/Custom.css">
-  </head>
-  <body>
-  <div class="container">
-  	<p class="title">Mail Writer</p>
-  </div>
-  <div class="container">
-  	<div class="jumbotron">
-  		<span class="label label-default">Escribe aquí los nombres de las personas:</span>
-  		<div class="input-group input-group-lg">
-  			<span class="input-group-addon" id="sizing-addon1">Nombre(s):</span>
- 			<input type="text" class="form-control" aria-describedby="sizing-addon1">
-		</div>
-		<span class="label label-default">Escribe aquí el mensaje para ellos:</span>
-  		<div class="input-group input-group-lg">
-  			<span class="input-group-addon" id="sizing-addon1">Mensaje:</span>
- 			<input type="text" class="form-control" aria-describedby="sizing-addon1">
-		</div>		
-  	</div>
-  </div>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="css/custom.css"/>
 
+      <script type="text/javascript" src="js/Chart.js"></script>
 
+      <meta charset="UTF-8">
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700' rel='stylesheet' type='text/css'>
-  </body>
-//HELLO EVERYONE
-</html>
+      <!--Let browser know website is optimized for mobile-->
+      <title>Sales Estimate</title>
+    </head>
+
+    <body>
+
+      <div class="row chart">
+        <div class="col s8 offset-s2">
+          <div class="card blue-grey lighten-3">
+            <div class="card-content black-text">
+              <span class="card-title center">Sales Estimate</span>
+              <div class = "row">
+                <div class="col s12">
+                  <div class="card-panel teal">
+                    <span class="white-text">Instructions: To get an estimate of your next annual sales, we use a Lagrange Extrapolation. All you need to do is to write the sales (money or product quantity) for each of the 4 quarters of the last year and click on "Calculate Estimate". Enjoy.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s6">
+                  <table class="highlight">
+                    <thead>
+                    <tr>
+                      <th>Quarter</th>
+                      <th>Sales</th>
+                    </tr>
+                  </thead>
+                    <tr>
+                    <td>Last year Q1</td>
+                    <td>
+                      <div class="input-field">
+                        <input id="q1" type="text" class="validate">
+                        <label for="q1">Q1 Sales</label>
+                      </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Last year Q2</td>
+                    <td>
+                      <div class="input-field">
+                        <input id="q2" type="text" class="validate">
+                        <label for="q2">Q2 Sales</label>
+                      </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Last year Q3</td>
+                    <td>
+                      <div class="input-field">
+                        <input id="q3" type="text" class="validate">
+                        <label for="q3">Q3 Sales</label>
+                      </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Last year Q4</td>
+                    <td>
+                      <div class="input-field">
+                        <input id="q4" type="text" class="validate">
+                        <label for="q4">Q4 Sales</label>
+                      </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Estimate Q1</td>
+                    <td>
+                      <div class="input-field col s12">
+                        <input disabled value="Estimated Sales Q1" id="esq1" type="text" class="validate">
+                        <label for="disabled">Estimaded sales Q1</label>
+                      </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Estimate Q2</td>
+                    <td>
+                      <div class="input-field col s12">
+                        <input disabled value="Estimated Sales Q2" id="esq2" type="text" class="validate">
+                        <label for="disabled">Estimaded sales Q2</label>
+                      </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Estimate Q3</td>
+                    <td>
+                      <div class="input-field col s12">
+                        <input disabled value="Estimated Sales Q3" id="esq3" type="text" class="validate">
+                        <label for="disabled">Estimaded sales Q3</label>
+                      </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Estimate Q4</td>
+                    <td>
+                      <div class="input-field col s12">
+                        <input disabled value="Estimated Sales Q4" id="esq4" type="text" class="validate">
+                        <label for="disabled">Estimaded sales Q4</label>
+                      </div>
+                    </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col s6">
+                  <canvas id="myChart" width="400" height="750"></canvas>
+                  <script>
+
+                  function lagrange(y1,y2,y3,y4){
+                    var x;
+                    x = [1, 2, 3, 4];
+                    var y, yk, ykPartial, xk;
+                    var yExt = [0,0,0,0];
+                    y = [y1, y2, y3, y4];
+
+                    for (var h = 0; h < 4; h++){
+                      yk = 0;
+                      xk = h + 5;
+                      for (var i = 0; i < 4; i++){
+                        ykPartial = y[i];
+                        for (var j = 0; j < 4; j++){
+                          if (i != j){
+                            ykPartial = ykPartial * (xk - x[j]) / (x[i] - x[j]);
+                          }
+                        }
+                        yk = yk + ykPartial;
+                      }
+                      if (yk < 0){
+                        yk = 0;
+                      }
+                      yExt[h] = yk;
+                    }
+                    return yExt;
+                  }
+
+                  function createChart(){
+                    var ctx = document.getElementById("myChart");
+                    var q1 = document.getElementById("q1").value;
+                    var q2 = document.getElementById("q2").value;
+                    var q3 = document.getElementById("q3").value;
+                    var q4 = document.getElementById("q4").value;
+
+                    var estimates = lagrange(q1, q2, q3, q4, 1);
+                    console.log(estimates);
+
+                    document.getElementById('esq1').value = estimates[0];
+                    document.getElementById('esq2').value = estimates[1];
+                    document.getElementById('esq3').value = estimates[2];
+                    document.getElementById('esq4').value = estimates[3];
+
+                    document.getElementById('esq1').style.color = 'black';
+                    document.getElementById('esq2').style.color = 'black';
+                    document.getElementById('esq3').style.color = 'black';
+                    document.getElementById('esq4').style.color = 'black';
+                    //document.getElementById('disabled').fontcolor('white');
+
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ["Q1", "Q2", "Q3", "Q4", "Est Q1", "Est Q2", "Est Q3", "Est Q4"],
+                            datasets: [{
+                                label: 'Sales Estimation',
+                                data: [q1, q2, q3, q4, estimates[0], estimates[1], estimates[2], estimates[3]]
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                  }
+                  </script>
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <a class="teal waves-effect waves-light btn" onclick="createChart()">Calculate Estimate</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+    <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Métodos Numéricos</h5>
+          <p class="grey-text text-lighten-4">Profesor: Luis Palomino.</p>
+
+          <p class="grey-text text-lighten-4">Juan Andrés Rocha  & Juan Nemesio Tamayo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2016 Tecnológico de Monterrey, Campus Guadalajara
+      </div>
+    </div>
+  </footer>
+  </html>
